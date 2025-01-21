@@ -1,22 +1,23 @@
 const express = require('express');
 const admin = require('firebase-admin');
-const { Configuration, OpenAIApi } = require('openai');
+const { OpenAI } = require('openai');  // Cambié esto a 'OpenAI' en lugar de 'OpenAIApi'
 const dotenv = require('dotenv');
 
 // Cargar las variables de entorno
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 // Inicializar Firebase
 admin.initializeApp({
     credential: admin.credential.cert(require(process.env.FIREBASE_SERVICE_ACCOUNT))
 });
 
-const openai = new OpenAIApi(new Configuration({
+// Inicializar OpenAI
+const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
-}));
+});
 
 app.use(express.json());
 
