@@ -3,6 +3,7 @@ const admin = require('firebase-admin');
 const { Configuration, OpenAIApi } = require('openai');
 const dotenv = require('dotenv');
 
+// Cargar las variables de entorno
 dotenv.config();
 
 const app = express();
